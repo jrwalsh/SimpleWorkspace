@@ -3,7 +3,7 @@ library(data.table)
 library(readxl)
 
   ## Import Data
-MaizeGDB_v3_v4.genes <- read_excel("B73_v3 to v4 mapping/Data/MaizeGDB_v3_v4.genes.xlsx", )
+MaizeGDB_v3_v4.genes <- read_excel("B73_v3 to v4 mapping/Data/MaizeGDB_v3_v4.genes.xlsx")
 gramene.new <- read.delim("B73_v3 to v4 mapping/Data/gramene.new")
 maizegdb.john <- read.delim2("B73_v3 to v4 mapping/Data/maizegdb.john")
 gramene.old <- read.delim("B73_v3 to v4 mapping/Data/gramene.old")
