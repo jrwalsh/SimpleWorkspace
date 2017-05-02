@@ -57,7 +57,3 @@ print(paste0(nrow(gramene.unique[gramene.unique$V4_gene %in% rejected$gene_id,])
 print(paste0(nrow(MaizeGDB_v3_v4.unique[MaizeGDB_v3_v4.unique$V4_gene %in% rejected$gene_id,]), 
              " a small percent were in the maize unique set, which means that maizeGDB and gramene agree on most of ",
              " the mappings for rejected genes"))
-
-# Output
-# write.table(MaizeGDB_v3_v4.unique, "/home/jesse/Dropbox/v3_v4_assoc/MaizeGDB_v3_v4.unique", sep="\t")
-# write.table(gramene.unique, "/home/jesse/Dropbox/v3_v4_assoc/gramene.unique", sep="\t")
