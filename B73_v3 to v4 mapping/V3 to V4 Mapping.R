@@ -44,14 +44,19 @@ print(paste0(length(unique(gramene.unique[!gramene.unique$V4_gene %in% MaizeGDB_
              " v4 genes in the unique gramene mappings which are not in MaizeGDB at all"))
 
 
-print(paste0(nrow(gramene.new[gramene.new$V4_gene %in% rejected$id,]), "genes in the gramene file were from the 
-             rejected set, so yes, they did map rejected gene models to v3"))
-print(paste0(nrow(gramene.new[MaizeGDB_v3_v4.genes$V4_gene %in% rejected$id,]), "... and so did MaizeGDB"))
-print(paste0(nrow(gramene.unique[gramene.unique$V4_gene %in% rejected$id,]), "a small percent were in the gramene 
-             unique set, which means that maizeGDB and gramene agree on most of the mappings for rejected genes"))
-print(paste0(nrow(MaizeGDB_v3_v4.unique[MaizeGDB_v3_v4.unique$V4_gene %in% rejected$id,]), 
-             "a small percent were in the maize unique set, which means that maizeGDB and gramene agree on most 
-             of the mappings for rejected genes"))
+# Got some funky type errors here, so need to coerce to data frame even though they are already data frames
+MaizeGDB_v3_v4.genes <- as.data.frame(MaizeGDB_v3_v4.genes)
+MaizeGDB_v3_v4.unique <- as.data.frame(MaizeGDB_v3_v4.unique)
+rejected <- as.data.frame(rejected)
+print(paste0(nrow(gramene.new[gramene.new$V4_gene %in% rejected$gene_id,]), 
+            " genes in the gramene file were from the rejected set, so yes, they did map rejected gene models to v3"))
+print(paste0(nrow(MaizeGDB_v3_v4.genes[MaizeGDB_v3_v4.genes$V4_gene %in% rejected$gene_id,]), "... and so did MaizeGDB"))
+print(paste0(nrow(gramene.unique[gramene.unique$V4_gene %in% rejected$gene_id,]), 
+             " a small percent were in the gramene unique set, which means that maizeGDB and gramene agree on most", 
+             " of the mappings for rejected genes"))
+print(paste0(nrow(MaizeGDB_v3_v4.unique[MaizeGDB_v3_v4.unique$V4_gene %in% rejected$gene_id,]), 
+             " a small percent were in the maize unique set, which means that maizeGDB and gramene agree on most of ",
+             " the mappings for rejected genes"))
 
 # Output
 # write.table(MaizeGDB_v3_v4.unique, "/home/jesse/Dropbox/v3_v4_assoc/MaizeGDB_v3_v4.unique", sep="\t")

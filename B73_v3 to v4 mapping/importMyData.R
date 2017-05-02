@@ -7,7 +7,7 @@ MaizeGDB_v3_v4.genes <- read_excel("B73_v3 to v4 mapping/Data/MaizeGDB_v3_v4.gen
 gramene.new <- read.delim("B73_v3 to v4 mapping/Data/gramene.new")
 maizegdb.john <- read.delim2("B73_v3 to v4 mapping/Data/maizegdb.john")
 gramene.old <- read.delim("B73_v3 to v4 mapping/Data/gramene.old")
-rejected <- read.delim2("~/Dropbox/v3_v4_assoc/Zea_mays.AGPv4.rejected_set.txt", header = FALSE)
+rejected <- read.delim("~/Dropbox/v3_v4_assoc/Zea_mays.AGPv4.rejected_set.txt", header = FALSE)
 
   ## Clean Data
 MaizeGDB_v3_v4.genes <- MaizeGDB_v3_v4.genes[c(1,2,8,9,20,21)]
@@ -23,7 +23,7 @@ gramene.new <- gramene.new[,c("V3_gene", "V4_gene")]
 
 rejected <- subset(rejected, V3=="gene", select = c(V1, V2, V3, V9))
 rejected <- cbind(rejected, sub("ID=(.*?);.*", "\\1", rejected$V9, perl = TRUE))
-colnames(rejected)[5] <- "id"
+colnames(rejected)[5] <- "gene_id"
 
   ## Generate useful subsets
 MaizeGDB_v3_v4.unique <- setDT(MaizeGDB_v3_v4.genes)[!gramene.new, on=c("V3_gene", "V4_gene")]
